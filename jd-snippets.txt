@@ -1,0 +1,77 @@
+
+$root.data.composite.nav
+
+
+
+
+曝光解析参数的函数：
+$parseReportParams
+
+
+transform: scale(.5);
+transform-origin: 0 0;
+
+
+import jump from '@/js/jump'
+jump.toItemDetail(skuId)
+
+
+?previewTime=2020-04-07 00:00:00
+http://localhost:9999/?previewTime=2020-04-07%2000:00:00
+
+<a :jump="`item|${shopId}|${eventId},${params}`"></a>
+
+
+金额的符号:
+&yen;
+
+
+更换埋点发送的参数
+mcInfo, biClk
+${mcInfo}_${biClk}
+
+
+:report="clickReportParams"
+
+商品组点击埋点：
+sendReport (item) {
+  // 埋点
+  const { groupId } = this.data
+  const { skuId, brokerInfo, name, mcInfo, biClk } = item
+  utils.sendClickReport('', `${Conf.activityId}_${skuId}_${groupId}_1_${brokerInfo}_${this.floorId}_${name}_${Conf.babelChannel}_${mcInfo}_${biClk}`)
+}
+
+
+
+广告组点击埋点：
+sendReport (item) {
+  // 埋点
+  const { groupId } = this.data
+  const { advertId, brokerInfo, name, mcInfo, biClk } = item
+  utils.sendClickReport('', `${Conf.activityId}_${advertId}_${groupId}_1_${brokerInfo}_${this.floorId}_${name}_${Conf.babelChannel}_${mcInfo}_${biClk}`)
+}
+
+
+
+曝光埋点：
+props: {
+  floorId: String
+},
+
+ :data-report-expo-id="expoId" :data-report-expo-param="expoParam"
+
+expoId: '',
+expoParam: `${Conf.activityId}_${this.floorId}_${Conf.babelChannel}`
+
+
+榜单只提供id，需要开发拼接：
+setLink (item) {
+  let param = ''
+  if (this.report) {
+    param = utils.parseReport(item, this.report, this.index)
+  }
+  const url =
+    item.extension.jumpUrl +
+    (item.extension.subSku ? item.extension.subSku[0].sku : '')
+  return `adv|${url}&fromName=dacu_huichang|${item.linkType}|${param}`
+}
