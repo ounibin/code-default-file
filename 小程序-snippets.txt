@@ -1,0 +1,35 @@
+wx.navigateTo({
+  url: 'test?id=1', //test?id=1，可以带参数，在onload options获取
+  events: {
+    // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
+    acceptDataFromOpenedPage: function(data) {
+      console.log(data)
+    },
+    someEvent: function(data) {
+      console.log(data)
+    }
+  },
+  success: function(res) {
+    // 通过eventChannel向被打开页面传送数据
+    res.eventChannel.emit('acceptDataFromOpenerPage', { data: 'test' })
+  }
+})
+
+
+wx.navigateTo({
+  // /pages/x/x?id=1，可以带参数，在onload options获取
+  url: '/pages/address/address',
+})
+
+
+// 绑定点击事件
+bindtap="tapName"
+
+
+init () {
+  console.log('初始化')
+},
+
+
+wxss引入外部wxss，不要使用css后缀，解析不到
+@import '文件相对路径.wxss';
