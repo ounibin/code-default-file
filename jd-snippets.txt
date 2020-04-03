@@ -1,7 +1,9 @@
 
 $root.data.composite.nav
 
-
+京东的新loading效果：
+jnpm i -S @jmdd/jmdd-page-loading
+import { showPageLoading, hidePageLoading } from '@jmdd/jmdd-page-loading'
 
 
 曝光解析参数的函数：
@@ -19,6 +21,8 @@ jump.toItemDetail(skuId)
 ?previewTime=2020-04-07 00:00:00
 http://localhost:9999/?previewTime=2020-04-07%2000:00:00
 
+
+jump在标签中的使用方式：
 <a :jump="`item|${shopId}|${eventId},${params}`"></a>
 
 
