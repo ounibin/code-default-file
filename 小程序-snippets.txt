@@ -1,21 +1,22 @@
 
  wx:for="{{list}}" wx:key="*this"
 
-const that = this
-wx.request({
-  url: userRank,
-  data: {
-    page: 1,
-    pageSize: 10
-  },
-  success (res) {
-    console.log(res.data)
-    that.setData({
-      bannerList: res.data.data
-    })
-  }
-})
-
+a () {
+  const that = this
+  wx.request({
+    url: userRank,
+    data: {
+      page: 1,
+      pageSize: 10
+    },
+    success (res) {
+      console.log(res.data)
+      that.setData({
+        bannerList: res.data.data
+      })
+    }
+  })
+},
 
 this.setData({
 
