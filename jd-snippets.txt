@@ -1,3 +1,19 @@
+data-report-expo-id="" :data-report-expo-param="ExpoParam"
+
+    getReportParam (item, index) {
+      const { groupId, groupName } = this.data
+      const { skuId, mcInfo, biClk, brokerInfo } = item
+      const brokerInfo1 = brokerInfo || ''
+      const sliderIndex = Math.floor(index / 4)
+      // 活动id_商品id_商品组id_楼层id_brokerInfo_楼层id_楼层名称_坑位顺序(0,1, 2,...)_屏数（首屏为0）_babelChannel_mcInfo_biClk
+      return `${this.$CONFIG.activityId}_${skuId}_${groupId}_2_${brokerInfo1}_2_${groupName}_${index}_${sliderIndex}_${this.$CONFIG.babelChannel}_${mcInfo}_${biClk}`
+    },
+
+
+const { advertId, groupId, name, mcInfo, biClk, brokerInfo } = item
+const { groupName } = this.dataTitleSearch
+this.$reportClick('Babel_dev_adv_BPJJD_Search', `${this.$CONFIG.activityId}_${advertId}_${groupId}_1_${brokerInfo}_1_${groupName}_${name}_${this.$CONFIG.babelChannel}_${mcInfo}_${biClk}`)
+
 
 $root.data.composite.nav
 
