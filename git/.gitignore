@@ -1,6 +1,10 @@
 node_modules
 dist
 
+# lock file
+package-lock.json
+yarn.lock
+
 # os files
 .DS_Store
 
